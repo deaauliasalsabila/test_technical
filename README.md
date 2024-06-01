@@ -19,5 +19,23 @@ Langkah-langkah untuk menginstal proyek.
 10. jika ingin menjalankan nya 
 ``yarn start``
 
-11. document postman yang sudah di test 
+11. Jika sudah bisa di jalankan di postman dan jangan lupa  url nya
+12. Yang saya buat  :
+    - http://localhost:5000/registration
+    - http://localhost:5000/login
+    - http://localhost:5000/profile
+    - http://localhost:5000/profile/update
+    - http://localhost:5000/profile/image
+    - http://localhost:5000/banner
+    - http://localhost:5000/services
+    - http://localhost:5000/balance
+    - http://localhost:5000/topup
+    - http://localhost:5000/transaction
+    - http://localhost:5000/transaction/history
+
+14. document postman yang sudah di test 
 https://documenter.getpostman.com/view/28535219/2sA3Qwb9Jf
+
+15. Disini ada link postman saya
+https://app.getpostman.com/join-team?invite_code=14c14a5f2bb32843a44258294b3b3a24&target_code=d6a318a5d1a674b0702662b7b4273801
+
