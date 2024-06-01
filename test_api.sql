@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 01, 2024 at 06:50 AM
+-- Generation Time: Jun 01, 2024 at 07:06 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.1.33
 
@@ -55,16 +55,6 @@ CREATE TABLE `banners` (
   `description` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `banners`
---
-
-INSERT INTO `banners` (`id`, `banner_name`, `banner_image`, `description`) VALUES
-(1, 'Banner 1', 'http://localhost:5000/assets/1717081102211-Buat_Brand__1_.png', 'Lerem Ipsum Dolor sit amet'),
-(2, 'Banner 2', 'http://localhost:5000/assets/1717081102211-Buat_Brand__1_.png', 'Lerem Ipsum Dolor sit amet'),
-(3, 'Banner 3', 'http://localhost:5000/assets/1717081102211-Buat_Brand__1_.png', 'Lerem Ipsum Dolor sit amet'),
-(4, 'Banner 4', 'http://localhost:5000/assets/1717081102211-Buat_Brand__1_.png', 'Lerem Ipsum Dolor sit amet');
-
 -- --------------------------------------------------------
 
 --
@@ -111,26 +101,6 @@ CREATE TABLE `topup_transactions` (
   `transaction_date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `topup_transactions`
---
-
-INSERT INTO `topup_transactions` (`id`, `users_id`, `top_up_amount`, `transaction_type`, `invoice_number`, `transaction_date`) VALUES
-(18, 13, 200000, 'TOPUP', 'INVTOPUP20240601022109502-001', '2024-06-01 02:21:09'),
-(24, 16, 100000, 'TOPUP', 'INVTOPUP20240601031922341-001', '2024-06-01 03:19:22');
-
---
--- Triggers `topup_transactions`
---
-DELIMITER $$
-CREATE TRIGGER `after_topup_insert` AFTER INSERT ON `topup_transactions` FOR EACH ROW BEGIN
-  UPDATE balance
-  SET balance = balance + NEW.top_up_amount
-  WHERE user_id = NEW.user_id;
-END
-$$
-DELIMITER ;
-
 -- --------------------------------------------------------
 
 --
@@ -146,17 +116,6 @@ CREATE TABLE `transaction` (
   `transaction_type` enum('PAYMENT') NOT NULL,
   `created_on` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `transaction`
---
-
-INSERT INTO `transaction` (`id`, `users_id`, `service_code`, `invoice_number`, `total_amount`, `transaction_type`, `created_on`) VALUES
-(5, 13, 'MUSIK', 'INV20240601005007364-001', 50000, 'PAYMENT', '2024-06-01 00:50:07'),
-(6, 13, 'PDAM', 'INV20240601005117876-001', 40000, 'PAYMENT', '2024-06-01 00:51:17'),
-(7, 13, 'PAJAK', 'INV20240601005215284-001', 40000, 'PAYMENT', '2024-06-01 00:52:15'),
-(8, 13, 'TV', 'INV20240601012345174-001', 50000, 'PAYMENT', '2024-06-01 01:23:45'),
-(9, 13, 'TV', 'INV20240601022346544-001', 50000, 'PAYMENT', '2024-06-01 02:23:46');
 
 --
 -- Triggers `transaction`
@@ -293,12 +252,6 @@ ALTER TABLE `topup_transactions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT for table `transaction`
---
-ALTER TABLE `transaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -313,19 +266,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `balance`
   ADD CONSTRAINT `balance_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `topup_transactions`
---
-ALTER TABLE `topup_transactions`
-  ADD CONSTRAINT `topup_transactions_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `balance` (`user_id`);
-
---
--- Constraints for table `transaction`
---
-ALTER TABLE `transaction`
-  ADD CONSTRAINT `transaction_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `transaction_ibfk_2` FOREIGN KEY (`service_code`) REFERENCES `services` (`service_code`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
