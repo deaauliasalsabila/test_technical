@@ -18,3 +18,6 @@ Langkah-langkah untuk menginstal proyek.
 ``yarn install``
 10. jika ingin menjalankan nya 
 ``yarn start``
+
+11. document postman yang sudah di test 
+https://documenter.getpostman.com/view/28535219/2sA3Qwb9Jf
