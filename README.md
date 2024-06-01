@@ -10,17 +10,18 @@ Langkah-langkah untuk menginstal proyek.
    untuk Server nya
 5. <img width="172" alt="Screen Shot 2024-06-01 at 12 34 46" src="https://github.com/deaauliasalsabila/test_technical/assets/139539301/10bbf1a1-5b05-4a06-82e2-42ce63f21e06">
 
-6. Untuk menjalankan nya harus tambahkan .env
-7. env.example juga sudah ada
-8. <img width="307" alt="Screen Shot 2024-06-01 at 12 30 41" src="https://github.com/deaauliasalsabila/test_technical/assets/139539301/04d89d19-7f26-4d96-9c9c-87f96f28b093">
+6. Untuk menjalankan nya harus tambahkan
+   ``.env``
+8. env.example juga sudah ada
+9. <img width="307" alt="Screen Shot 2024-06-01 at 12 30 41" src="https://github.com/deaauliasalsabila/test_technical/assets/139539301/04d89d19-7f26-4d96-9c9c-87f96f28b093">
 
-9. Install terlebih dahulu 
+10. Install terlebih dahulu 
 ``yarn install``
-10. jika ingin menjalankan nya 
+11. jika ingin menjalankan nya 
 ``yarn start``
 
-11. Jika sudah bisa di jalankan di postman dan jangan lupa  url nya
-12. Yang saya buat  :
+12. Jika sudah bisa di jalankan di postman dan jangan lupa  url nya
+13. Yang saya buat  :
     - http://localhost:5000/registration
     - http://localhost:5000/login
     - http://localhost:5000/profile
